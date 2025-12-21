@@ -1,0 +1,282 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang Kami</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      left: 0;
+      background-color: #0a1d3b;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+    }
+
+    .logo {
+      font-size: 1.6em;
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .auth-buttons a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid white;
+      padding: 6px 15px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+    .auth-buttons a:hover {
+      background-color: white;
+      color: #0a1d3b;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(10, 29, 59, 0.5), rgba(10, 29, 59, 0.6)), 
+                  url('kapal pesiar.png') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: slideUp 1s ease-out;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      animation: fadeIn 1.6s ease-out;
+    }
+
+    section {
+      padding: 100px 60px;
+      max-width: 1280px;
+      margin: auto;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #0a1d3b;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    footer {
+      background-color: rgba(10, 29, 59, 0.97);
+      backdrop-filter: blur(6px);
+      color: white;
+      padding-top: 3rem;
+    }
+
+    .footer-link-group a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-link-group a:hover {
+      color: #FF6F00;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="logo">Cruise Voyage</div>
+      <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="Aktivitas dan Rute.html">Aktivitas & Rute</a>
+        <a href="Pesanan.html">Pesanan</a>
+        <a href="Tentang Kami.html" class="active">Tentang Kami</a>
+        <a href="Kontak.html">Kontak</a>
+      </div>
+      <div class="auth-buttons">
+        <a href="#">Login</a>
+        <a href="#">Daftar</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Tentang Cruise Voyage</h1>
+      <p>Menjelajahi dunia dengan kemewahan dan kenyamanan adalah misi kami. Cruise Voyage menghadirkan pengalaman pelayaran terbaik yang menggabungkan keindahan laut, budaya, dan relaksasi.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Visi & Misi Kami</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card p-8">
+        <h3 class="text-xl font-semibold text-[#0a1d3b] mb-4">Visi</h3>
+        <p class="text-gray-600 leading-relaxed">Menjadi penyedia pelayaran mewah terkemuka di Asia yang memberikan pengalaman tak terlupakan dengan layanan terbaik, inovasi berkelanjutan, dan dedikasi terhadap kepuasan pelanggan.</p>
+      </div>
+      <div class="card p-8">
+        <h3 class="text-xl font-semibold text-[#0a1d3b] mb-4">Misi</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-2">
+          <li>Menyediakan layanan pelayaran berkelas dunia dengan standar keamanan tinggi.</li>
+          <li>Menghadirkan hiburan dan destinasi eksklusif untuk setiap pelanggan.</li>
+          <li>Mendukung keberlanjutan dan pelestarian lingkungan laut.</li>
+          <li>Membangun hubungan jangka panjang dengan pelanggan dan mitra bisnis.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+<section class="pt-3 pb-20 bg-white">
+    <h2 class="section-title">Kenapa Memilih Cruise Voyage?</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card p-6 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/744/744502.png" class="w-16 mx-auto mb-4" alt="Pelayanan Premium">
+        <h3 class="font-semibold text-lg text-[#0a1d3b] mb-2">Pelayanan Premium</h3>
+        <p class="text-gray-600 text-sm">Setiap tamu adalah prioritas utama kami, dengan pelayanan personal yang hangat dan profesional.</p>
+      </div>
+      <div class="card p-6 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="w-16 mx-auto mb-4" alt="Destinasi Eksklusif">
+        <h3 class="font-semibold text-lg text-[#0a1d3b] mb-2">Destinasi Eksklusif</h3>
+        <p class="text-gray-600 text-sm">Kami membawa Anda ke destinasi paling menakjubkan di dunia — dari Karibia hingga Mediterania.</p>
+      </div>
+      <div class="card p-6 text-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" class="w-16 mx-auto mb-4" alt="Kenyamanan Maksimal">
+        <h3 class="font-semibold text-lg text-[#0a1d3b] mb-2">Kenyamanan Maksimal</h3>
+        <p class="text-gray-600 text-sm">Kapal kami dilengkapi fasilitas modern seperti spa, restoran, dan hiburan kelas dunia.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-white py-10">
+    <div class="container mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold text-orange-500 mb-4">Cruise Voyage</h3>
+        <p class="text-sm text-gray-300">Penyedia layanan kapal pesiar mewah terkemuka, membawa Anda menjelajahi keajaiban dunia dengan gaya dan kenyamanan.</p>
+      </div>
+      <div class="footer-link-group">
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Perusahaan</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="Tentang Kami.html">Tentang Kami</a></li>
+          <li><a href="#">Karir</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-link-group">
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Layanan</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="Aktivitas dan Rute.html">Rute Pelayaran</a></li>
+          <li><a href="#">Manajemen Pesanan</a></li>
+          <li><a href="#">Program Loyalitas</a></li>
+          <li><a href="Kontak.html">Pusat Bantuan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Hubungi Kami</h4>
+        <p class="text-sm text-gray-300">Jl. Samudra Raya No. 10 Jakarta, Indonesia</p>
+        <p class="text-sm text-gray-300 mt-2">Email: info@cruisevoyage.id</p>
+        <p class="text-sm text-gray-300">Telp: +62 812 3456 7890</p>
+      </div>
+    </div>
+    <div class="text-center border-t border-gray-700 mt-8 pt-6 text-sm text-gray-400">
+      © 2025 Cruise Voyage. Hak Cipta Dilindungi.
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aktivitas & Rute</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+   * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      left: 0;
+      background-color: #0a1d3b;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+    }
+
+    .logo {
+      font-size: 1.6em;
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .auth-buttons a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid white;
+      padding: 6px 15px;
+      border-radius: 20px;
+      transition: 0.3s;
+    }
+
+
+    .auth-buttons a:hover {
+      background-color: white;
+      color: #0a1d3b;
+    }
+
+    section {
+      padding: 120px 60px 80px;
+      max-width: 1280px;
+      margin: auto;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 2em;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #0a1d3b;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: rgba(10, 29, 59, 0.97);
+      backdrop-filter: blur(6px);
+      color: white;
+      padding-top: 3rem;
+    }
+
+    .footer-link-group a {
+      color: #ccc;
+      transition: color 0.3s;
+    }
+
+    .footer-link-group a:hover {
+      color: #FF6F00;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="logo">Cruise Voyage</div>
+      <div class="nav-links">
+        <a href="index.html">Beranda</a>
+        <a href="Aktivitas dan Rute.html" class="active">Aktivitas & Rute</a>
+        <a href="Pesanan.html">Pesanan</a>
+        <a href="Tentang Kami.html">Tentang Kami</a>
+        <a href="Kontak.html">Kontak</a>
+      </div>
+      <div class="auth-buttons">
+        <a href="#">Login</a>
+        <a href="#">Daftar</a>
+      </div>
+    </div>
+  </nav>
+
+  <section id="aktivitas">
+    <h2 class="section-title">Kemewahan Tanpa Batas di Lautan</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card">
+        <img src="theater.jpeg" alt="Hiburan Kelas Dunia">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold mb-2">Hiburan Kelas Dunia</h3>
+          <p class="text-sm text-gray-600">Nikmati pertunjukan spektakuler gaya Broadway di teater mewah, atau saksikan pertunjukan musik live dan komedi.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="food.jpg" alt="Petualangan Kuliner">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold mb-2">Petualangan Kuliner</h3>
+          <p class="text-sm text-gray-600">Jelajahi cita rasa global dari restoran fine dining hingga kafe kasual. Nikmati hidangan gourmet dari koki berpengalaman.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="relaksasi.jpg" alt="Relaksasi & Kebugaran">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold mb-2">Relaksasi & Kebugaran</h3>
+          <p class="text-sm text-gray-600">Manjakan diri Anda dengan perawatan spa dan pijat yang menenangkan, atau tetap bugar di pusat kebugaran modern.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="kegiatan.jpg" alt="Kegiatan Keluarga & Anak">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold mb-2">Kegiatan Keluarga</h3>
+          <p class="text-sm text-gray-600">Seluruh keluarga akan terhibur! Dari taman air seru hingga klub anak-anak dan remaja dengan pengawasan profesional.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="shopping.jpg" alt="Belanja Bebas Bea">
+        <div class="card-content">
+          <h3 class="text-lg font-semibold mb-2">Belanja Bebas Bea</h3>
+          <p class="text-sm text-gray-600">Jelajahi berbagai butik di atas kapal untuk menemukan perhiasan, pakaian desainer, dan suvenir bebas pajak.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="pt-6 pb-20 bg-white" id="rute">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Pilihan Rute Pelayaran</h2>
+
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
+      <div class="flex flex-wrap gap-3 mb-4 md:mb-0">
+        <button class="bg-[#0a1d3b] text-white px-4 py-2 rounded-full font-medium text-sm shadow hover:bg-[#132c5b] transition">
+          Semua Rute (8)
+        </button>
+        <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition">
+          Asia Tenggara
+        </button>
+        <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition">
+          Mediterania
+        </button>
+        <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition">
+          Karibia
+        </button>
+        <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-full font-medium text-sm hover:bg-gray-200 transition">
+          Alaska
+        </button>
+      </div>
+
+      <div>
+        <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-orange-500 focus:outline-none">
+          <option>Urutkan: Terbaik</option>
+          <option>Harga Terendah</option>
+          <option>Harga Tertinggi</option>
+          <option>Durasi Terpendek</option>
+          <option>Durasi Terpanjang</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+        <img src="asia.jpg" 
+             alt="Keajaiban Tropis Asia" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">7 Hari</h3>
+          <p class="text-gray-600 mb-4">Keajaiban Tropis Asia<br>Singapura - Phuket - Langkawi - Bali</p>
+          <div class="flex justify-between items-center">
+            <p class="font-semibold text-gray-800 text-lg">35.000.000</p>
+            <a href="Pesanan.html" 
+               class="text-white px-4 py-2 rounded-full text-sm transition hover:opacity-90" 
+               style="background: linear-gradient(90deg, #ff9800, #ff6f00);">
+               Detail
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+        <img src="mediterania.avif" 
+             alt="Mediterania Klasik" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">10 Hari</h3>
+          <p class="text-gray-600 mb-4">Mediterania Klasik<br>Roma - Athena - Santorini - Venice</p>
+          <div class="flex justify-between items-center">
+            <p class="font-semibold text-gray-800 text-lg">Rp50.000.000</p>
+            <a href="Pesanan.html" 
+               class="text-white px-4 py-2 rounded-full text-sm transition hover:opacity-90" 
+               style="background: linear-gradient(90deg, #ff9800, #ff6f00);">
+               Detail
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+        <img src="pulau.avif" 
+             alt="Pulau-Pulau Karibia" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">5 Hari</h3>
+          <p class="text-gray-600 mb-4">Pulau-Pulau Karibia<br>Miami - Bahama - Jamaika</p>
+          <div class="flex justify-between items-center">
+            <p class="font-semibold text-gray-800 text-lg">Rp25.000.000</p>
+            <a href="Pesanan.html" 
+               class="text-white px-4 py-2 rounded-full text-sm transition hover:opacity-90" 
+               style="background: linear-gradient(90deg, #ff9800, #ff6f00);">
+               Detail
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition">
+        <img src="alasca.jpg" 
+             alt="Ekspedisi Gletser Alaska" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">14 Hari</h3>
+          <p class="text-gray-600 mb-4">Ekspedisi Gletser Alaska<br>Vancouver - Juneau - Skagway - Glacier Bay</p>
+          <div class="flex justify-between items-center">
+            <p class="font-semibold text-gray-800 text-lg">Rp60.000.000</p>
+            <a href="Pesanan.html" 
+               class="text-white px-4 py-2 rounded-full text-sm transition hover:opacity-90" 
+               style="background: linear-gradient(90deg, #ff9800, #ff6f00);">
+               Detail
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <footer class="text-white py-10">
+    <div class="container mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold text-orange-500 mb-4">Cruise Voyage</h3>
+        <p class="text-sm text-gray-300">Penyedia layanan kapal pesiar mewah terkemuka, membawa Anda menjelajahi keajaiban dunia dengan gaya dan kenyamanan.</p>
+      </div>
+      <div class="footer-link-group">
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Perusahaan</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="Tentang Kami.html">Tentang Kami</a></li>
+          <li><a href="#">Karir</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-link-group">
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Layanan</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="Aktivitas dan Rute.html">Rute Pelayaran</a></li>
+          <li><a href="#">Manajemen Pesanan</a></li>
+          <li><a href="#">Program Loyalitas</a></li>
+          <li><a href="Kontak.html">Pusat Bantuan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Hubungi Kami</h4>
+        <p class="text-sm text-gray-300">Jl. Samudra Raya No. 10 Jakarta, Indonesia</p>
+        <p class="text-sm text-gray-300 mt-2">Email: info@cruisevoyage.id</p>
+        <p class="text-sm text-gray-300">Telp: +62 812 3456 7890</p>
+      </div>
+    </div>
+    <div class="text-center border-t border-gray-700 mt-8 pt-6 text-sm text-gray-400">
+      © 2025 Cruise Voyage. Hak Cipta Dilindungi.
+    </div>
+  </footer>
+</body>
+</html>

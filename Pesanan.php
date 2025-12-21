@@ -1,0 +1,381 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesanan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+    :root {
+        --primary-dark: #0a1d3b;
+        --accent-orange: #FF6F00;
+        --accent-orange-light: #ff9800;
+        }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body, html {
+        height: 100%;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: #f7f9fb;
+    }
+
+    nav {
+        position: fixed; top: 0; width: 100vw; left: 0;
+        background-color: var(--primary-dark);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        z-index: 10;
+    }
+
+    .nav-content { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 50px; }
+    .logo { font-size: 1.6em; color: white; font-weight: 600; }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { color: white; text-decoration: none; font-weight: 400; transition: all 0.3s ease; padding: 5px 10px; border-radius: 10px; }
+    .nav-links a:hover, .nav-links a.active { background-color: rgba(255, 255, 255, 0.15); }
+    .auth-buttons { display: flex; gap: 0.5rem; }
+    .auth-buttons a { color: white; text-decoration: none; font-weight: 500; border: 1px solid white; padding: 6px 15px; border-radius: 20px; transition: 0.3s; }
+    .auth-buttons a:hover { background-color: white; color: var(--primary-dark); }
+        
+    footer {
+        background-color: rgba(10, 29, 59, 0.97);
+        backdrop-filter: blur(6px);
+        color: white;
+        padding-top: 3rem;
+    }
+
+    .footer-link-group a { color: #ccc; transition: color 0.3s; }
+    .footer-link-group a:hover { color: var(--accent-orange); }
+
+    .input-animated:focus {
+        border-color: var(--accent-orange);
+        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .btn-accent {
+        background: linear-gradient(90deg, var(--accent-orange-light), var(--accent-orange));
+        transition: opacity 0.3s, transform 0.3s;
+    }
+    .btn-accent:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    .btn-submit-default {
+        background-color: #6c757d; 
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-submit-default:hover {
+        background-color: #5a6268;
+    }
+
+    .package-card {
+        border: 1px solid #e0e0e0;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .package-card:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    
+    }
+
+    .selected-package {
+        border: 2px solid var(--accent-orange) !important;
+        background-color: #fff7ed;
+        transform: scale(1.02);
+    }
+
+    .bank-card {
+        border: 2px solid #e5e7eb;
+        transition: all 0.3s;
+    }
+    .peer:checked + .bank-card {
+        border-color: var(--accent-orange);
+        background-color: #fff7ed;
+    }
+
+    .step-hidden { display: none !important; }
+</style>
+
+</head>
+
+<body>
+<nav>
+    <div class="nav-content">
+        <div class="logo">Cruise Voyage</div>
+        <div class="nav-links">
+            <a href="Beranda.html">Beranda</a>
+            <a href="Aktivitas dan Rute.html">Aktivitas & Rute</a>
+            <a href="Pesanan.php" class="active">Pesanan</a>
+            <a href="Tentang Kami.html">Tentang Kami</a>
+            <a href="Kontak.html">Kontak</a>
+        </div>
+        <div class="auth-buttons">
+            <a href="#">Login</a>
+            <a href="#">Daftar</a>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-28 pb-10 max-w-7xl mx-auto px-6 lg:px-8">
+        
+    <div id="bookingWrapper" class="flex flex-col lg:flex-row gap-8 items-start">
+            
+        <div id="orderFormCard" class="lg:w-2/3 w-full bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                
+            <div id="step1">
+                <div id="statusAlert" class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6" role="alert">
+                    <p class="font-bold">Pilih Paket Pelayaran Dahulu</p>
+                    <p class="text-sm">Anda harus memilih salah satu paket di samping sebelum mengisi data pemesan.</p>
+                </div>
+                    
+                <form id="orderForm">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b border-gray-100 pb-2">Data Pemesan</h2>
+                    <p class="text-sm text-gray-500 mb-6">Informasi untuk konfirmasi dan dokumen perjalanan. Email dan telepon akan menerima E-Ticket.</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="col-span-1 md:col-span-2">
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap (Sesuai ID)</label>
+                            <input type="text" id="fullName" required placeholder="Contoh: Raisya Hanina"
+                                class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" required placeholder="Contoh: raisya@gmail.com"
+                                class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                        </div>                      
+                       <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Nomor Ponsel</label>
+                            <input type="tel" id="phone" required placeholder="Contoh: +62 8XX XXXX XXXX"
+                                class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                        </div>
+                        <div class="col-span-1 md:col-span-2">
+                            <label for="route" class="block text-sm font-medium text-gray-700 mb-2">Rute Pelayaran yang Diinginkan</label>
+                            <select id="route" required class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800 transition-all duration-300">
+                                <option value="" disabled selected>Pilih salah satu rute</option>
+                                <option value="Asia">7 Hari - Keajaiban Tropis Asia</option>
+                                <option value="Mediterania">10 Hari - Mediterania Klasik</option>
+                                <option value="Karibia">5 Hari - Pulau-Pulau Karibia</option>
+                                <option value="Alaska">14 Hari - Ekspedisi Gletser Alaska</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="numPassengers" class="block text-sm font-medium text-gray-700 mb-2">Jumlah Penumpang (Min. 1)</label>
+                            <input type="number" id="numPassengers" required value="1" min="1" 
+                                class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                        </div>
+                        <div>
+                            <label for="departureDate" class="block text-sm font-medium text-gray-700 mb-2">Tanggal Wisata/Keberangkatan</label>
+                            <input type="date" id="departureDate" required 
+                                class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                        </div>
+                    </div>
+                        
+                    <div class="mt-8 pt-4 border-t border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b border-gray-100 pb-2">Data Penumpang</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="passengerName" class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap Penumpang</label>
+                                <input type="text" id="passengerName" required placeholder="Nama Lengkap Penumpang"
+                                    class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                            </div>
+                            <div>
+                                <label for="idNumber" class="block text-sm font-medium text-gray-700 mb-2">Nomor Identitas (KTP/Paspor)</label>
+                                <input type="text" id="idNumber" required placeholder="Nomor ID"
+                                    class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800" />
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="mt-8 pt-4 border-t border-gray-200">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4 border-b border-gray-100 pb-2">Metode Pembayaran (Transfer Bank)</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <label class="relative cursor-pointer"><input type="radio" name="bank" value="BCA" class="peer hidden" required><div class="bank-card p-4 border-2 rounded-xl flex flex-col items-center gap-2 peer-checked:border-orange-500 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" class="h-5" alt="BCA"><span class="text-[10px] font-bold text-gray-500">8820-0192-33</span></div></label>
+                            <label class="relative cursor-pointer"><input type="radio" name="bank" value="MANDIRI" class="peer hidden"><div class="bank-card p-4 border-2 rounded-xl flex flex-col items-center gap-2 peer-checked:border-orange-500 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" class="h-4 my-1" alt="Mandiri"><span class="text-[10px] font-bold text-gray-500">123-00-9823-11</span></div></label>
+                            <label class="relative cursor-pointer"><input type="radio" name="bank" value="BSI" class="peer hidden"><div class="bank-card p-4 border-2 rounded-xl flex flex-col items-center gap-2 peer-checked:border-orange-500 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Bank_Syariah_Indonesia.svg" class="h-5" alt="BSI"><span class="text-[10px] font-bold text-gray-500">7711-2233-44</span></div></label>
+                            <label class="relative cursor-pointer"><input type="radio" name="bank" value="BRI" class="peer hidden"><div class="bank-card p-4 border-2 rounded-xl flex flex-col items-center gap-2 peer-checked:border-orange-500 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/6/68/BANK_BRI_logo.svg" class="h-5" alt="BRI"><span class="text-[10px] font-bold text-gray-500">0021-01-9922-01</span></div></label>
+                            <label class="relative cursor-pointer"><input type="radio" name="bank" value="BNI" class="peer hidden"><div class="bank-card p-4 border-2 rounded-xl flex flex-col items-center gap-2 peer-checked:border-orange-500 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Bank_Negara_Indonesia_logo_%282004%29.svg" class="h-5" alt="BNI"><span class="text-[10px] font-bold text-gray-500">0123-4567-89</span></div></label>
+                            <label class="relative cursor-pointer"><input type="radio" name="bank" value="BTN" class="peer hidden"><div class="bank-card p-4 border-2 rounded-xl flex flex-col items-center gap-2 peer-checked:border-orange-500 transition-all"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/BTN_2024.svg" class="h-5" alt="BTN"><span class="text-[10px] font-bold text-gray-500">0001-01-2233-01</span></div></label>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-gray-200">
+                        <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">Catatan Tambahan</label>
+                        <textarea id="notes" rows="3" placeholder="Masukkan catatan tambahan di sini..."
+                            class="input-animated w-full p-3 border border-gray-300 rounded-lg text-gray-800"></textarea>
+                    </div>
+
+                    <button type="button" onclick="bukaRincian()" id="submitOrderBtn"
+                        class="btn-submit-default text-white font-semibold w-full py-3 rounded-xl mt-8 shadow-lg">
+                        Lanjutkan Pembayaran
+                    </button>
+                </form>
+            </div>
+
+            <div id="step2" class="step-hidden">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 border-orange-500 pb-2">Rincian Pemesanan</h2>
+                <div class="bg-gray-50 p-6 rounded-xl space-y-4 mb-8">
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Nama Pemesan:</span><span id="resNama" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Email:</span><span id="resEmail" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Nomor Telepon:</span><span id="resPhone" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Nama Penumpang:</span><span id="resPassenger" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Nomor Identitas:</span><span id="resID" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Rute Pelayaran:</span><span id="resRute" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Tanggal Perjalanan:</span><span id="resTanggal" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Jumlah Penumpang:</span><span id="resPax" class="font-semibold text-gray-800"></span></div>
+                    <div class="flex justify-between border-b pb-2 text-sm"><span>Metode Pembayaran:</span><span id="resBank" class="font-bold text-orange-600"></span></div>
+                    <div class="mt-4 p-4 bg-orange-100 rounded-lg text-center">
+                        <p class="text-xs text-orange-800 mb-1 italic">Silakan transfer ke nomor rekening tujuan:</p>
+                        <p id="resRek" class="text-xl font-bold text-orange-600 tracking-widest"></p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="kembaliKeForm()" class="w-1/3 py-3 border-2 border-gray-300 rounded-xl font-semibold text-gray-600 hover:bg-gray-100 transition-all">Ubah Data</button>
+                    <button onclick="finalSubmit()" class="w-2/3 py-3 btn-accent text-white rounded-xl font-bold shadow-lg uppercase tracking-wide">Konfirmasi Pembayaran</button>
+                </div>
+            </div>
+        </div>
+            
+        <div id="sidebar" class="lg:w-1/3 w-full sticky top-28 space-y-4">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">Pilih Paket Pelayaran</h2>
+            <div id="card-Asia" onclick="pilihPaket('Asia', this)" class="package-card bg-white p-5 rounded-xl shadow-md">
+                <h3 class="text-lg font-bold text-gray-800">7 Hari - Keajaiban Tropis Asia</h3>
+                <p class="text-sm text-gray-500 mt-1">Singapura - Phuket - Langkawi - Bali</p>
+                <div class="flex justify-between items-center mt-3"><span class="font-bold text-xl text-orange-500">Rp 35.000.000</span><span class="btn-accent text-white px-4 py-2 rounded-lg text-sm font-medium">Pilih</span></div>
+            </div>
+            <div id="card-Mediterania" onclick="pilihPaket('Mediterania', this)" class="package-card bg-white p-5 rounded-xl shadow-md">
+                <h3 class="text-lg font-bold text-gray-800">10 Hari - Mediterania Klasik</h3>
+                <p class="text-sm text-gray-500 mt-1">Roma - Athena - Santorini - Venice</p>
+                <div class="flex justify-between items-center mt-3"><span class="font-bold text-xl text-orange-500">Rp 50.000.000</span><span class="btn-accent text-white px-4 py-2 rounded-lg text-sm font-medium">Pilih</span></div>
+            </div>
+            <div id="card-Karibia" onclick="pilihPaket('Karibia', this)" class="package-card bg-white p-5 rounded-xl shadow-md">
+                <h3 class="text-lg font-bold text-gray-800">5 Hari - Pulau-Pulau Karibia</h3>
+                <p class="text-sm text-gray-500 mt-1">Miami - Bahama - Jamaika</p>
+                <div class="flex justify-between items-center mt-3"><span class="font-bold text-xl text-orange-500">Rp 25.000.000</span><span class="btn-accent text-white px-4 py-2 rounded-lg text-sm font-medium">Pilih</span></div>
+            </div>
+            <div id="card-Alaska" onclick="pilihPaket('Alaska', this)" class="package-card bg-white p-5 rounded-xl shadow-md">
+                <h3 class="text-lg font-bold text-gray-800">14 Hari - Ekspedisi Gletser Alaska</h3>
+                <p class="text-sm text-gray-500 mt-1">Vancouver - Juneau - Skagway - Glacier Bay</p>
+                <div class="flex justify-between items-center mt-3"><span class="font-bold text-xl text-orange-500">Rp 60.000.000</span><span class="btn-accent text-white px-4 py-2 rounded-lg text-sm font-medium">Pilih</span></div>
+            </div>
+        </div>
+    </div> <div id="step3" class="step-hidden text-center py-20 bg-white rounded-xl shadow-lg w-full max-w-2xl mx-auto my-10">
+        <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+        </div>
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">Pembayaran Diterima!</h2>
+        <p class="text-gray-500 mb-8 italic">Terima kasih, data pesanan Anda telah diterima dan mohon cek email untuk informasi lebih lanjut terkait pemberangkatan.</p>
+        <button onclick="location.reload()" class="px-10 py-3 btn-accent text-white rounded-full font-bold shadow-lg">Kembali Pesan Paket Lain</button>
+    </div>
+</main>
+
+<script>
+    function pilihPaket(rute, element) {
+        document.querySelectorAll('.package-card').forEach(card => card.classList.remove('selected-package'));
+        element.classList.add('selected-package');
+        document.getElementById('route').value = rute;
+        const btnSubmit = document.getElementById('submitOrderBtn');
+        btnSubmit.classList.remove('btn-submit-default'); btnSubmit.classList.add('btn-accent');
+        const alertBox = document.getElementById('statusAlert');
+        alertBox.className = "bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6";
+        alertBox.innerHTML = "<p class='font-bold text-sm'>Paket " + rute + " Berhasil dipilih!</p>";
+        document.getElementById('orderFormCard').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function bukaRincian() {
+        const rute = document.getElementById('route').value;
+        const bank = document.querySelector('input[name="bank"]:checked');
+        if(!rute || !bank) { alert("Harap pilih paket pelayaran dan bank tujuan dahulu!"); return; }
+
+        document.getElementById('resNama').innerText = document.getElementById('fullName').value;
+        document.getElementById('resEmail').innerText = document.getElementById('email').value; 
+        document.getElementById('resPhone').innerText = document.getElementById('phone').value;
+        document.getElementById('resPassenger').innerText = document.getElementById('passengerName').value;
+        document.getElementById('resID').innerText = document.getElementById('idNumber').value;
+        document.getElementById('resRute').innerText = rute;
+        document.getElementById('resTanggal').innerText = document.getElementById('departureDate').value; 
+        document.getElementById('resPax').innerText = document.getElementById('numPassengers').value + " Orang";
+        document.getElementById('resBank').innerText = bank.value;
+        
+        const accounts = {"BCA":"8820-0192-33", "MANDIRI":"123-00-9823-11", "BRI":"0021-01-9922-01", "BNI":"0123-4567-89", "BSI":"7711-2233-44", "BTN":"0001-01-2233-01"};
+        document.getElementById('resRek').innerText = accounts[bank.value];
+
+        document.getElementById('step1').classList.add('step-hidden');
+        document.getElementById('step2').classList.remove('step-hidden');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function kembaliKeForm() {
+        document.getElementById('step2').classList.add('step-hidden');
+        document.getElementById('step1').classList.remove('step-hidden');
+    }
+
+    function finalSubmit() {
+        const formData = new FormData();
+        formData.append('fullName', document.getElementById('fullName').value);
+        formData.append('email', document.getElementById('email').value);
+        formData.append('phone', document.getElementById('phone').value);
+        formData.append('route', document.getElementById('route').value);
+        formData.append('numPassengers', document.getElementById('numPassengers').value);
+        formData.append('departureDate', document.getElementById('departureDate').value);
+        formData.append('passengerName', document.getElementById('passengerName').value);
+        formData.append('idNumber', document.getElementById('idNumber').value);
+        formData.append('notes', document.getElementById('notes').value);
+        formData.append('paymentMethod', document.querySelector('input[name="bank"]:checked').value);
+
+        fetch('proses_simpan.php', { method: 'POST', body: formData })
+        .then(() => {
+          document.getElementById('bookingWrapper').classList.add('step-hidden');
+          document.getElementById('step3').classList.remove('step-hidden');
+          window.scrollTo({top: 0, behavior: 'smooth'});       
+        })
+        .catch(err => alert("Gagal menyimpan data!"));
+    }
+</script>
+
+<footer class="text-white py-10">
+    <div class="container mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold text-orange-500 mb-4">Cruise Voyage</h3>
+        <p class="text-sm text-gray-300">Penyedia layanan kapal pesiar mewah terkemuka, membawa Anda menjelajahi keajaiban dunia dengan gaya dan kenyamanan.</p>
+      </div>
+      <div class="footer-link-group">
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Perusahaan</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="Tentang Kami.html">Tentang Kami</a></li>
+          <li><a href="#">Karir</a></li>
+          <li><a href="#">Syarat & Ketentuan</a></li>
+          <li><a href="#">Kebijakan Privasi</a></li>
+        </ul>
+      </div>
+      <div class="footer-link-group">
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Layanan</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="Aktivitas dan Rute.html">Rute Pelayaran</a></li>
+          <li><a href="#">Manajemen Pesanan</a></li>
+          <li><a href="#">Program Loyalitas</a></li>
+          <li><a href="Kontak.html">Pusat Bantuan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold mb-4 border-b border-gray-700 pb-1">Hubungi Kami</h4>
+        <p class="text-sm text-gray-300">Jl. Samudra Raya No. 10 Jakarta, Indonesia</p>
+        <p class="text-sm text-gray-300 mt-2">Email: info@cruisevoyage.id</p>
+        <p class="text-sm text-gray-300">Telp: +62 812 3456 7890</p>
+      </div>
+    </div>
+    <div class="text-center border-t border-gray-700 mt-8 pt-6 text-sm text-gray-400">
+      © 2025 Cruise Voyage. Hak Cipta Dilindungi.
+    </div>
+</footer>
+</body>
+</html>
